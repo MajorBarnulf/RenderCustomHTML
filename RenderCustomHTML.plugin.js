@@ -13,7 +13,7 @@
 
 module.exports = class RenderCustomHTML {
 	getName() {
-		return "Render Custom HTML";
+		return "RenderCustomHTML";
 	} // Name of your plugin to show on the plugins page
 	getDescription() {
 		return "Will render the HTML contained in messages using \"/RCH\" ";
