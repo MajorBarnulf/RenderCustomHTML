@@ -19,7 +19,7 @@ module.exports = class RenderCustomHTML {
 		return "Will render the HTML contained in messages using \"/RCH\" ";
 	} // Description to show on the plugins page
 	getVersion() {
-		return "0.1.9";
+		return "0.1.10";
 	} // Current version. I recommend following semantic versioning <http://semver.org/> (e.g. 0.0.1)
 	getAuthor() {
 		return "MajorBarnulf";
@@ -30,7 +30,7 @@ module.exports = class RenderCustomHTML {
 	
 	start() {
         if (!global.ZeresPluginLibrary) return window.BdApi.alert("Library Missing",`The library plugin needed for ${this.getName()} is missing.<br /><br /> <a href="https://betterdiscord.net/ghdl?url=https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js" target="_blank">Click here to download the library!</a>`);
-        ZLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.j");
+        ZLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js");
 		console.log("%c[MB][Render Custom HTML] %cstarting", 'color:red', 'color: inherit');
 		//global.ZeresPluginLibrary.PluginUpdater.processUpdateCheck("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js").then(global.ZeresPluginLibrary.PluginUpdater.downloadPlugin("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js"));
 		// a list of the tags that allow execution of scripts
