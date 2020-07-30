@@ -45,7 +45,7 @@ module.exports = class RenderCustomHTML {
 		window.stringToHtml = (str) => {
 			var parser = new DOMParser();
 			str = window.stringUnsanitizer(str);
-			console.log(str)
+			//console.log(str);
 			var doc = parser.parseFromString(str, 'text/html');
 			return doc.body;
 		}
