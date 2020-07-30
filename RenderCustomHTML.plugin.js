@@ -14,10 +14,10 @@ module.exports = class RenderCustomHTML {
 		return "Render Custom HTML";
 	} // Name of your plugin to show on the plugins page
 	getDescription() {
-		return "Will render the HTML contained after \"/RCH\" in messages";
+		return "Will render the HTML contained in messages using \"/RCH\" ";
 	} // Description to show on the plugins page
 	getVersion() {
-		return "0.1.1";
+		return "0.1.2";
 	} // Current version. I recommend following semantic versioning <http://semver.org/> (e.g. 0.0.1)
 	getAuthor() {
 		return "MajorBarnulf";
