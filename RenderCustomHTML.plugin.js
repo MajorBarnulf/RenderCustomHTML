@@ -17,7 +17,7 @@ module.exports = class RenderCustomHTML {
 		return "Will render the HTML contained in messages using \"/RCH\" ";
 	} // Description to show on the plugins page
 	getVersion() {
-		return "0.1.3";
+		return "0.1.4";
 	} // Current version. I recommend following semantic versioning <http://semver.org/> (e.g. 0.0.1)
 	getAuthor() {
 		return "MajorBarnulf";
@@ -30,7 +30,7 @@ module.exports = class RenderCustomHTML {
         if (!global.ZeresPluginLibrary) return window.BdApi.alert("Library Missing",`The library plugin needed for ${this.getName()} is missing.<br /><br /> <a href="https://betterdiscord.net/ghdl?url=https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js" target="_blank">Click here to download the library!</a>`);
         ZLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), "LINK_TO_RAW_CODE");
 		console.log("%c[MB][Render Custom HTML] %cstarting", 'color:red', 'color: inherit');
-		global.PluginUpdater.processUpdateCheck("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js");
+		global.PluginUpdater.processUpdateCheck("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js").then(ZeresPluginLibrary.PluginUpdater.downloadPlugin("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js"));
 		// a list of the tags that allow execution of scripts
 		window.dangerousTagList = ["Event", "abort", "afterprint", "animationend", "animationiteration", "animationstart", "beforeprint", "beforeunload", "canplay", "canplaythrough", "contextmenu", "copy", "cut", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "ended", "error", "focusin", "focusout", "fullscreenchange", "fullscreenerror", "hashchange", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "message", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseout", "mouseup", "mousewheel", "offline", "online", "open", "pagehide", "pageshow", "paste", "pause", "play", "playing", "popstate", "progress", "ratechange", "resize", "reset", "search", "seeked", "seeking", "select", "show", "stalled", "storage", "submit", "suspend", "timeupdate", "toggle", "touchcancel", "touchend", "touchmove", "touchstart", "transitionend", "unload", "volumechange", "waiting", "wheel"]
 		//TODO: treat "blur", "click", "focus", "scroll"
