@@ -28,6 +28,8 @@ module.exports = class RenderCustomHTML {
 	
 	start() {
 		console.log("%c[MB][Render Custom HTML] %cstarting", 'color:red', 'color: inherit');
+		// a list of the tags that allow execution of scripts
+		window.dangerousTagList = ["Event", "abort", "afterprint", "animationend", "animationiteration", "animationstart", "beforeprint", "beforeunload", "blur", "canplay", "canplaythrough", "click", "contextmenu", "copy", "cut", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "ended", "error", "focus", "focusin", "focusout", "fullscreenchange", "fullscreenerror", "hashchange", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "message", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseout", "mouseup", "mousewheel", "offline", "online", "open", "pagehide", "pageshow", "paste", "pause", "play", "playing", "popstate", "progress", "ratechange", "resize", "reset", "scroll", "search", "seeked", "seeking", "select", "show", "stalled", "storage", "submit", "suspend", "timeupdate", "toggle", "touchcancel", "touchend", "touchmove", "touchstart", "transitionend", "unload", "volumechange", "waiting", "wheel"]
 		window.lastChange = false;
 		window.stringUnsanitizer = (str) => {
 			return str = str.split("&amp;").join("&").split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join('"').split("&#039;").join("'");
@@ -40,7 +42,17 @@ module.exports = class RenderCustomHTML {
 			return doc.body;
 		}
 		window.securizeDOMElement = (element) => {
+			var allElements = document.getElementsByTagName("*");
 			var unsafeElements = element.querySelectorAll("script, style, link");
+			for (var i = 0; i < allElements.length; i++) {
+				let element = allElements[i];
+				for (let j = 0; j < window.dangerousTagList.length; j++) {
+					var property = window.dangerousTagList[j];
+					if (element[property] && element[property] != null) {
+						unsafeElements.push(element);
+					}
+				}
+			}
 			for (let i = 0; i < unsafeElements.length; i++) {
 				var element = unsafeElements[i];
 				element.parentNode.removeChild(element);
