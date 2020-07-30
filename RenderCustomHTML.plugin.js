@@ -41,9 +41,10 @@ module.exports = class RenderCustomHTML {
 			var doc = parser.parseFromString(str, 'text/html');
 			return doc.body;
 		}
-		window.securizeDOMElement = (element) => {
-			var allElements = document.getElementsByTagName("*");
-			var unsafeElements = element.querySelectorAll("script, style, link");
+		window.securizeDOMElement = (inputElement) => {
+			var allElements = inputElement.getElementsByTagName("*");
+			var unsafeElements = inputElement.querySelectorAll("script, style, link");
+			
 			for (var i = 0; i < allElements.length; i++) {
 				let element = allElements[i];
 				for (let j = 0; j < window.dangerousTagList.length; j++) {
@@ -53,10 +54,13 @@ module.exports = class RenderCustomHTML {
 					}
 				}
 			}
+			
 			for (let i = 0; i < unsafeElements.length; i++) {
 				var element = unsafeElements[i];
 				element.parentNode.removeChild(element);
 			}
+			var outputElement = inputElement;
+			return outputElement;
 		}
 	} // Called when the plugin is activated (including after reloads)
 	stop() {
@@ -75,7 +79,7 @@ module.exports = class RenderCustomHTML {
 						var htmlData = element.innerHTML.replace("/RCH", "");
 						var newDocument = window.stringToHtml(htmlData);
 						element.innerHTML = "";
-						element.appendChild(newDocument);
+						element.appendChild(window.securizeDOMElement(newDocument));
 					}
 				}
 			}
