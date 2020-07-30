@@ -19,7 +19,7 @@ module.exports = class RenderCustomHTML {
 		return "Will render the HTML contained in messages using \"/RCH\" ";
 	} // Description to show on the plugins page
 	getVersion() {
-		return "0.1.10";
+		return "0.2.0";
 	} // Current version. I recommend following semantic versioning <http://semver.org/> (e.g. 0.0.1)
 	getAuthor() {
 		return "MajorBarnulf";
@@ -73,7 +73,7 @@ module.exports = class RenderCustomHTML {
 			return outputElement;
 		}
 	} // Called when the plugin is activated (including after reloads)
-	
+
 	stop() {
 	} // Called when the plugin is deactivated
 	
