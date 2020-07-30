@@ -32,14 +32,16 @@ module.exports = class RenderCustomHTML {
         if (!global.ZeresPluginLibrary) return window.BdApi.alert("Library Missing",`The library plugin needed for ${this.getName()} is missing.<br /><br /> <a href="https://betterdiscord.net/ghdl?url=https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js" target="_blank">Click here to download the library!</a>`);
         ZLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js");
 		console.log("%c[MB][Render Custom HTML] %cstarting", 'color:red', 'color: inherit');
-		//global.ZeresPluginLibrary.PluginUpdater.processUpdateCheck("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js").then(global.ZeresPluginLibrary.PluginUpdater.downloadPlugin("Render Custom HTML", "https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js"));
+
+
 		// a list of the tags that allow execution of scripts
 		window.dangerousTagList = ["Event", "abort", "afterprint", "animationend", "animationiteration", "animationstart", "beforeprint", "beforeunload", "canplay", "canplaythrough", "contextmenu", "copy", "cut", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "ended", "error", "focusin", "focusout", "fullscreenchange", "fullscreenerror", "hashchange", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "message", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseover", "mouseout", "mouseup", "mousewheel", "offline", "online", "open", "pagehide", "pageshow", "paste", "pause", "play", "playing", "popstate", "progress", "ratechange", "resize", "reset", "search", "seeked", "seeking", "select", "show", "stalled", "storage", "submit", "suspend", "timeupdate", "toggle", "touchcancel", "touchend", "touchmove", "touchstart", "transitionend", "unload", "volumechange", "waiting", "wheel"]
 		//TODO: treat "blur", "click", "focus", "scroll"
-		window.lastChange = false;
+
 		window.stringUnsanitizer = (str) => {
 			return str = str.split("&amp;").join("&").split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join('"').split("&#039;").join("'");
 		}
+
 		window.stringToHtml = (str) => {
 			var parser = new DOMParser();
 			str = window.stringUnsanitizer(str);
@@ -47,6 +49,7 @@ module.exports = class RenderCustomHTML {
 			var doc = parser.parseFromString(str, 'text/html');
 			return doc.body;
 		}
+
 		window.securizeDOMElement = (inputElement) => {
 			var allElements = inputElement.getElementsByTagName("*");
 			var unsafeElements = inputElement.querySelectorAll("script, link");
@@ -70,6 +73,7 @@ module.exports = class RenderCustomHTML {
 			return outputElement;
 		}
 	} // Called when the plugin is activated (including after reloads)
+	
 	stop() {
 	} // Called when the plugin is deactivated
 	
