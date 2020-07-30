@@ -17,14 +17,13 @@ module.exports = class RenderCustomHTML {
 		return "Will render the HTML contained after \"/RCH\" in messages";
 	} // Description to show on the plugins page
 	getVersion() {
-		return "0.0.1";
+		return "0.1.0";
 	} // Current version. I recommend following semantic versioning <http://semver.org/> (e.g. 0.0.1)
 	getAuthor() {
 		return "MajorBarnulf";
 	} // Your name
 	
 	load() {
-		console.log("%c[MB][Render Custom HTML] %cloading", 'color:red', 'color: inherit');
 	} // Called when the plugin is loaded in to memory
 	
 	start() {
@@ -49,12 +48,9 @@ module.exports = class RenderCustomHTML {
 		}
 	} // Called when the plugin is activated (including after reloads)
 	stop() {
-		console.log("%c[MB][Render Custom HTML] %cstopping", 'color:red', 'color: inherit');
 	} // Called when the plugin is deactivated
 	
 	observer(changes) {
-		console.log("%c[MB][Render Custom HTML] %cchanged: ", 'color:red', 'color: inherit');
-		//console.log(changes)
 		
 		if (changes.type === "childList"){
 			let messageCollection = document.getElementsByClassName("da-messageContent")
@@ -66,8 +62,6 @@ module.exports = class RenderCustomHTML {
 					if (element.innerHTML.includes("/RCH")){
 						var htmlData = element.innerHTML.replace("/RCH", "");
 						var newDocument = window.stringToHtml(htmlData);
-						//window.focusNewDocument = newDocument;
-						console.log(htmlData, newDocument);
 						element.innerHTML = "";
 						element.appendChild(newDocument);
 					}
