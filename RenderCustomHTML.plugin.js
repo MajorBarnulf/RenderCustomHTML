@@ -9,6 +9,8 @@
 * @source https://raw.githubusercontent.com/MajorBarnulf/RenderCustomHTML/master/RenderCustomHTML.plugin.js
 */
 
+//META{"name":"RenderCustomHTML"}*//
+
 module.exports = class RenderCustomHTML {
 	getName() {
 		return "Render Custom HTML";
