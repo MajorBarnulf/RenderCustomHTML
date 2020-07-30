@@ -14,7 +14,7 @@ module.exports = class RenderCustomHTML {
 		return "Render Custom HTML";
 	} // Name of your plugin to show on the plugins page
 	getDescription() {
-		return "Will render the HTML contained in codeblocks after \"/RCH\" in messages";
+		return "Will render the HTML contained after \"/RCH\" in messages";
 	} // Description to show on the plugins page
 	getVersion() {
 		return "0.0.1";
