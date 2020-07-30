@@ -44,7 +44,7 @@ module.exports = class RenderCustomHTML {
 		}
 		window.securizeDOMElement = (inputElement) => {
 			var allElements = inputElement.getElementsByTagName("*");
-			var unsafeElements = inputElement.querySelectorAll("script, style, link");
+			var unsafeElements = inputElement.querySelectorAll("script, link");
 			
 			for (var i = 0; i < allElements.length; i++) {
 				let element = allElements[i];
